@@ -9,6 +9,7 @@ import Awards from './components/Awards';
 import Testimonials from './components/Testimonials';
 import Services from './components/Services';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Testimonials />
       <Services />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
