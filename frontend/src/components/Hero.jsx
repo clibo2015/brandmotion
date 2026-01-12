@@ -116,8 +116,10 @@ const Hero = () => {
             setVideoLoaded(true);
           }}
           onError={(e) => {
-            console.error('Video error:', e);
-            console.error('Video error details:', e.currentTarget.error);
+            const error = e.currentTarget.error;
+            console.error('Video error object:', error);
+            console.error('Video error code:', error ? error.code : 'unknown');
+            console.error('Video error message:', error ? error.message : 'no message');
             setVideoError(true);
           }}
         >
