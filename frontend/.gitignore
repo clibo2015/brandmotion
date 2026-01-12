@@ -22,6 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Large video files - handle separately
-/public/hero-background.mp4
-/public/introduction1.mp4
+# Large video files are now handled by Git LFS
+# /public/hero-background.mp4
+# /public/introduction1.mp4
