@@ -26,18 +26,14 @@ const Benefits = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl lg:text-7xl font-bold text-gray-900"
+          className="text-4xl lg:text-7xl text-gray-900"
         >
           <span
-            className="block text-transparent font-light italic"
-            style={{
-              WebkitTextStroke: '1.5px #1a1a1a',
-              fontFamily: '"Playfair Display", serif'
-            }}
+            className="block text-transparent hero-title-outline"
           >
             OUR KEY
           </span>
-          <span className="block font-black" style={{ fontFamily: '"Playfair Display", serif' }}>
+          <span className="block font-akira">
             BENEFITS
           </span>
         </motion.h2>
