@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X } from 'lucide-react';
 import { heroData } from '../data/mock';
@@ -6,7 +6,22 @@ import { heroData } from '../data/mock';
 const Hero = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [showContent, setShowContent] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const videoRef = useRef(null);
+  const bgVideoRef = useRef(null);
+
+  useEffect(() => {
+    // Preload background video
+    if (bgVideoRef.current) {
+      bgVideoRef.current.addEventListener('loadeddata', () => {
+        setVideoLoaded(true);
+      });
+      bgVideoRef.current.addEventListener('error', () => {
+        setVideoError(true);
+      });
+    }
+  }, []);
 
   const handlePlayClick = () => {
     setShowContent(false);
@@ -96,15 +111,26 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen bg-black overflow-hidden pt-24 lg:pt-32">
       {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-60"
-      >
-        <source src="/hero-background.mp4" type="video/mp4" />
-      </video>
+      {!videoError && (
+        <video
+          ref={bgVideoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            videoLoaded ? 'opacity-60' : 'opacity-0'
+          }`}
+          onError={() => setVideoError(true)}
+        >
+          <source src="/hero-background.mp4" type="video/mp4" />
+        </video>
+      )}
+
+      {/* Fallback background when video fails to load */}
+      {(videoError || !videoLoaded) && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" />
+      )}
 
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40" />
