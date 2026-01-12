@@ -82,6 +82,8 @@ const Awards = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.4 }}
                 />
+                {/* Forward Blue Overlay */}
+                <div className="absolute inset-0 bg-[#00B2B3]/20 group-hover:bg-[#00B2B3]/10 transition-all duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h4 className="text-xl font-bold text-white mb-1 group-hover:text-[#00BFB3] transition-colors">

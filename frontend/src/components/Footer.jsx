@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight, Send } from 'lucide-react';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Thank you for subscribing with: ${email}`);
-    setEmail('');
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer id="contact" className="bg-gray-900 text-white">
       {/* CTA Section */}
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -43,7 +35,7 @@ const Footer = () => {
             </motion.a>
           </motion.div>
 
-          {/* Newsletter */}
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -51,26 +43,45 @@ const Footer = () => {
             transition={{ delay: 0.2 }}
             className="bg-gray-800 rounded-2xl p-8 lg:p-10"
           >
-            <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
+            <h3 className="text-2xl font-bold mb-4">Get In Touch</h3>
             <p className="text-gray-400 mb-6">
-              Subscribe to our newsletter for the latest insights and updates.
+              Ready to start your project? Send us a message and we'll get back to you soon.
             </p>
-            <form onSubmit={handleSubmit} className="flex gap-3">
+            <form className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="bg-gray-700 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFB3]"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="bg-gray-700 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFB3]"
+                  required
+                />
+              </div>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 bg-gray-700 border-0 rounded-full px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFB3]"
+                type="text"
+                placeholder="Subject"
+                className="w-full bg-gray-700 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFB3]"
                 required
               />
+              <textarea
+                placeholder="Your Message"
+                rows="4"
+                className="w-full bg-gray-700 border-0 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFB3] resize-none"
+                required
+              ></textarea>
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-14 h-14 bg-[#00BFB3] rounded-full flex items-center justify-center text-gray-900 hover:bg-[#00a89d] transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-[#00BFB3] text-gray-900 py-3 rounded-lg font-semibold hover:bg-[#00a89d] transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-5 h-5" />
+                Send Message
+                <Send className="w-4 h-4" />
               </motion.button>
             </form>
           </motion.div>
@@ -103,7 +114,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((link) => (
+              {['Home', 'About', 'Services', 'Contact'].map((link) => (
                 <li key={link}>
                   <motion.a
                     href={`#${link.toLowerCase()}`}
@@ -121,7 +132,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6">Services</h4>
             <ul className="space-y-3">
-              {['Logo Design', 'Marketing', 'Photography', 'Digital Printing'].map((service) => (
+              {['Logo Design', 'Marketing', 'Digital Printing'].map((service) => (
                 <li key={service}>
                   <motion.a
                     href="#services"
@@ -163,9 +174,20 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © 2025 Brandsurge. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <p className="text-gray-500 text-sm">
+              © 2025 Brandsurge. All rights reserved.
+            </p>
+            <div className="flex gap-4 text-sm">
+              <a href="/privacy-policy" className="text-gray-500 hover:text-[#00BFB3] transition-colors">
+                Privacy Policy
+              </a>
+              <span className="text-gray-700">|</span>
+              <a href="/terms-of-service" className="text-gray-500 hover:text-[#00BFB3] transition-colors">
+                Terms of Service
+              </a>
+            </div>
+          </div>
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -3 }}

@@ -67,11 +67,15 @@ const Testimonials = () => {
                   {testimonials[currentIndex].quote}
                 </p>
                 <div className="flex items-center gap-4">
-                  <img
-                    src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
+                  <div className="relative">
+                    <img
+                      src={testimonials[currentIndex].image}
+                      alt={testimonials[currentIndex].name}
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
+                    {/* Forward Blue Overlay */}
+                    <div className="absolute inset-0 bg-[#00B2B3]/20 rounded-full" />
+                  </div>
                   <div>
                     <h4 className="text-white font-bold text-lg">
                       {testimonials[currentIndex].name}
@@ -116,11 +120,15 @@ const Testimonials = () => {
                     : 'bg-white/5 border border-transparent hover:bg-white/10'
                 }`}
               >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
+                <div className="relative">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  {/* Forward Blue Overlay */}
+                  <div className="absolute inset-0 bg-[#00B2B3]/20 rounded-full" />
+                </div>
                 <div className="text-left">
                   <p className="text-white font-semibold">{item.name}</p>
                   <p className="text-gray-400 text-sm">{item.role}</p>

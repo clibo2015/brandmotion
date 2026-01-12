@@ -1,21 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { services } from '../data/mock';
-import { Palette, Megaphone, Camera, Printer, ArrowRight } from 'lucide-react';
+import { Palette, Megaphone, Printer, ArrowRight } from 'lucide-react';
 
 const iconMap = {
   'shape-1': Palette,
   'shape-2': Megaphone,
-  'shape-3': Camera,
   'shape-4': Printer
 };
 
 const Services = () => {
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section id="services" className="py-20 lg:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (

@@ -10,7 +10,7 @@ const Benefits = () => {
   });
 
   return (
-    <section ref={containerRef} className="bg-[#f5f5f5] relative">
+    <section id="about" ref={containerRef} className="bg-[#f5f5f5] relative">
       {/* Section Header */}
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-32">
         <motion.p
@@ -70,7 +70,7 @@ const BenefitCard = ({ benefit, index }) => {
       {/* Image */}
       <motion.div
         style={{ y }}
-        className="w-full lg:w-1/2 aspect-[4/3] overflow-hidden rounded-2xl"
+        className="w-full lg:w-1/2 aspect-[4/3] overflow-hidden rounded-2xl relative"
       >
         <motion.img
           src={benefit.image}
@@ -79,6 +79,8 @@ const BenefitCard = ({ benefit, index }) => {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6 }}
         />
+        {/* Forward Blue Overlay */}
+        <div className="absolute inset-0 bg-[#00B2B3]/20 hover:bg-[#00B2B3]/10 transition-all duration-300" />
       </motion.div>
 
       {/* Content */}

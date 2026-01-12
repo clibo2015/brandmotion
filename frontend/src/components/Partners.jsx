@@ -16,21 +16,18 @@ const Partners = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex items-start gap-6"
+            className="flex items-center gap-8"
           >
             <span className="text-7xl lg:text-9xl font-black text-[#00BFB3]">
               {aboutData.partnersCount}
             </span>
-            <div className="pt-4">
-              <h3
-                className="text-xl lg:text-2xl font-bold tracking-[0.3em] text-gray-400 mb-4 font-poppins-bold"
-              >
-                {aboutData.partnersTitle.split(' ').map((word, i) => (
-                  <span key={i} className="block">
-                    {word.split('').join(' ')}
-                  </span>
-                ))}
+            <div>
+              <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">
+                {aboutData.partnersTitle}
               </h3>
+              <p className="text-sm text-gray-500 uppercase tracking-wider">
+                Clients We Work With
+              </p>
             </div>
           </motion.div>
 
@@ -57,28 +54,26 @@ const Partners = () => {
           </motion.div>
         </div>
 
-        {/* Logo Marquee */}
+        {/* Client Names Marquee */}
         <div className="relative overflow-hidden py-8">
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
             transition={{
-              duration: 30,
+              duration: 40,
               repeat: Infinity,
               ease: 'linear'
             }}
-            className="flex gap-12 lg:gap-20 items-center"
+            className="flex gap-8 lg:gap-12 items-center"
           >
             {doubledLogos.map((partner, index) => (
               <motion.div
                 key={`${partner.id}-${index}`}
-                whileHover={{ scale: 1.1, opacity: 1 }}
+                whileHover={{ scale: 1.05, opacity: 1 }}
                 className="flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300"
               >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-10 lg:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-                />
+                <span className="text-gray-600 hover:text-[#00BFB3] font-medium text-sm lg:text-base whitespace-nowrap transition-colors duration-300">
+                  {partner.name}
+                </span>
               </motion.div>
             ))}
           </motion.div>

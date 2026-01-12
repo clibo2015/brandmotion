@@ -2,25 +2,38 @@
 
 export const navLinks = [
   { name: 'HOME', href: '#home', active: true },
-  { name: 'PAGES', href: '#pages' },
-  { name: 'PORTFOLIO', href: '#portfolio' },
-  { name: 'BLOG', href: '#blog' },
+  { name: 'ABOUT', href: '#about' },
+  { name: 'SERVICES', href: '#services' },
   { name: 'CONTACT', href: '#contact' }
 ];
 
 export const partnerLogos = [
-  { id: 1, name: 'Partner 1', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-4.webp' },
-  { id: 2, name: 'Partner 2', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-1.webp' },
-  { id: 3, name: 'Partner 3', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-7.webp' },
-  { id: 4, name: 'Partner 4', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-12.webp' },
-  { id: 5, name: 'Partner 5', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-5.webp' },
-  { id: 6, name: 'Partner 6', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-2.webp' },
-  { id: 7, name: 'Partner 7', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-8.webp' },
-  { id: 8, name: 'Partner 8', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-11.webp' },
-  { id: 9, name: 'Partner 9', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-6.webp' },
-  { id: 10, name: 'Partner 10', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-3.webp' },
-  { id: 11, name: 'Partner 11', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-9.webp' },
-  { id: 12, name: 'Partner 12', logo: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/logo-10.webp' }
+  { id: 1, name: 'AFEi', logo: null },
+  { id: 2, name: 'Premier Fishing (PTY) Ltd', logo: null },
+  { id: 3, name: 'Aqua Car Hire', logo: null },
+  { id: 4, name: 'Arena Capital Investments', logo: null },
+  { id: 5, name: 'ARG Design', logo: null },
+  { id: 6, name: 'AY/O', logo: null },
+  { id: 7, name: 'Break Bread Group', logo: null },
+  { id: 8, name: 'AFRINAT', logo: null },
+  { id: 9, name: 'The Laser Group', logo: null },
+  { id: 10, name: 'BECOS Civils Engineering', logo: null },
+  { id: 11, name: 'Eastern Acoustics', logo: null },
+  { id: 12, name: 'Gerhard Meder Associates', logo: null },
+  { id: 13, name: 'YEZA Express', logo: null },
+  { id: 14, name: 'Ian Van Wyk Engineering', logo: null },
+  { id: 15, name: 'Health System Technologies', logo: null },
+  { id: 16, name: 'Kagiso Asset Management', logo: null },
+  { id: 17, name: 'Harbour St. Refits Engineering', logo: null },
+  { id: 18, name: 'Kolmanskop Tavern (Namibia)', logo: null },
+  { id: 19, name: 'Matrix Investments', logo: null },
+  { id: 20, name: 'CK Coachworks', logo: null },
+  { id: 21, name: 'Naude Industries', logo: null },
+  { id: 22, name: 'Nedgroup Investments', logo: null },
+  { id: 23, name: 'Penguin Tours (Namibia)', logo: null },
+  { id: 24, name: 'Treble Group', logo: null },
+  { id: 25, name: 'SDJ Marketing', logo: null },
+  { id: 26, name: 'Visionary Consulting', logo: null }
 ];
 
 export const workProcess = [
@@ -56,30 +69,29 @@ export const benefits = [
 
 export const awards = [
   { id: 1, title: 'Design Mastery', year: '2024', category: 'Graphic Design', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-1.webp' },
-  { id: 2, title: 'Artistic Brilliance', year: '2023', category: 'Photography', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-2.webp' },
-  { id: 3, title: 'Capture Legend', year: '2022', category: 'Creative Work', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-4.webp' },
-  { id: 4, title: 'Studio Leaders', year: '2020', category: 'Info Graphic', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-5.webp' },
-  { id: 5, title: 'Visual Honors', year: '2018', category: 'Website Design', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-3.webp' }
+  { id: 2, title: 'Capture Legend', year: '2022', category: 'Creative Work', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-4.webp' },
+  { id: 3, title: 'Studio Leaders', year: '2020', category: 'Info Graphic', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-5.webp' },
+  { id: 4, title: 'Visual Honors', year: '2018', category: 'Website Design', image: 'https://brandsurgecreative.co.za/wp-content/uploads/2024/11/award-3.webp' }
 ];
 
 export const testimonials = [
   {
     id: 1,
-    name: 'David Cumin',
+    name: 'Thabo Mthembu',
     role: 'Art Director',
     quote: 'Working with Brandsurge has been an incredible journey. Their creative vision and attention to detail transformed our brand identity beyond expectations.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=400&auto=format&fit=crop'
   },
   {
     id: 2,
-    name: 'Sarah Mitchell',
+    name: 'Nomsa Khumalo',
     role: 'Marketing Director',
     quote: 'The team delivered exceptional results on time. Their strategic approach to design helped us connect with our audience in meaningful ways.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&auto=format&fit=crop'
   },
   {
     id: 3,
-    name: 'Michael Chen',
+    name: 'Pieter van der Merwe',
     role: 'CEO',
     quote: 'Brandsurge understood our vision from day one. They created a brand identity that perfectly captures our company\'s values and ambitions.',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop'
@@ -101,12 +113,6 @@ export const services = [
   },
   {
     id: 3,
-    title: 'Photography',
-    description: 'Professional photography services that showcase your brand, products, and story through compelling visual narratives.',
-    icon: 'shape-3'
-  },
-  {
-    id: 4,
     title: 'Digital Printing',
     description: 'High-quality digital printing solutions for all your marketing collateral, from business cards to large format displays.',
     icon: 'shape-4'
@@ -122,7 +128,7 @@ export const heroData = {
 };
 
 export const aboutData = {
-  partnersCount: '12+',
+  partnersCount: '26+',
   partnersTitle: 'Trusted Worldwide Partners',
   description: 'We are a creative agency dedicated to bringing your brand vision to life. With years of experience and a passion for innovation, we deliver exceptional design solutions that make an impact.'
 };
