@@ -23,8 +23,7 @@ const Partners = () => {
             </span>
             <div className="pt-4">
               <h3
-                className="text-xl lg:text-2xl font-light tracking-[0.3em] text-gray-400 mb-4"
-                style={{ fontFamily: '"Playfair Display", serif' }}
+                className="text-xl lg:text-2xl font-bold tracking-[0.3em] text-gray-400 mb-4 font-poppins-bold"
               >
                 {aboutData.partnersTitle.split(' ').map((word, i) => (
                   <span key={i} className="block">
