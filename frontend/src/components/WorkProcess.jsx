@@ -49,7 +49,7 @@ const WorkProcess = () => {
 
               {/* Content */}
               <div className="mt-4">
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-[#00BFB3] transition-colors duration-300">
+                <h3 className="text-xl lg:text-2xl font-poppins-bold mb-3 group-hover:text-[#00BFB3] transition-colors duration-300">
                   {item.title}
                 </h3>
                 {index === 2 && (
