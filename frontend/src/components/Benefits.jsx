@@ -97,7 +97,7 @@ const BenefitCard = ({ benefit, index }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-2xl lg:text-3xl font-bold text-gray-900 mt-4 mb-4"
+          className="text-2xl lg:text-3xl font-poppins-black text-gray-900 mt-4 mb-4"
         >
           {benefit.title}
         </motion.h3>
