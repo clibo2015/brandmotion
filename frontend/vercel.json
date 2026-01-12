@@ -5,7 +5,7 @@
   "framework": "create-react-app",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!.*\\.(?:mp4|webm|ogg|jpg|jpeg|png|gif|svg|css|js|ico|woff|woff2)$).*)",
       "destination": "/index.html"
     }
   ],
