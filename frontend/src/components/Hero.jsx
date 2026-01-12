@@ -29,11 +29,7 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             variants={textVariants}
-            className="hero-title-outline text-5xl md:text-7xl lg:text-[120px] font-light italic tracking-wide text-transparent"
-            style={{
-              WebkitTextStroke: '1.5px #1a1a1a',
-              fontFamily: '"Playfair Display", serif'
-            }}
+            className="hero-title-outline text-4xl md:text-6xl lg:text-[100px] tracking-wider text-transparent"
           >
             {heroData.title1}
           </motion.h1>
@@ -42,8 +38,7 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             variants={textVariants}
-            className="text-5xl md:text-7xl lg:text-[120px] font-black italic tracking-tight text-gray-900 -mt-2 lg:-mt-6"
-            style={{ fontFamily: '"Playfair Display", serif' }}
+            className="font-akira text-4xl md:text-6xl lg:text-[100px] tracking-wide text-gray-900 -mt-1 lg:-mt-4"
           >
             {heroData.title2}
           </motion.h1>
