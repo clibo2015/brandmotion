@@ -28,15 +28,16 @@ const Awards = () => {
               className="text-4xl lg:text-7xl"
             >
               <span
-                className="block text-transparent font-light italic"
+                className="block text-transparent"
                 style={{
                   WebkitTextStroke: '1.5px rgba(255,255,255,0.5)',
-                  fontFamily: '"Playfair Display", serif'
+                  fontFamily: "'Akira Expanded', sans-serif",
+                  letterSpacing: '0.1em'
                 }}
               >
                 NOTABLE
               </span>
-              <span className="block font-black text-white" style={{ fontFamily: '"Playfair Display", serif' }}>
+              <span className="block font-akira text-white">
                 AWARDS
               </span>
             </motion.h2>
