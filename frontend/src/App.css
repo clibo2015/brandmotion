@@ -78,15 +78,13 @@ html {
   color: white;
 }
 
-/* Outline text style */
+/* Outline text style for Akira */
 .hero-title-outline {
-  -webkit-text-stroke: 1.5px #1a1a1a;
+  font-family: 'Akira Expanded', sans-serif;
+  -webkit-text-stroke: 2px #1a1a1a;
   -webkit-text-fill-color: transparent;
-}
-
-/* Playfair Display font class */
-.font-playfair {
-  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  letter-spacing: 0.1em;
 }
 
 /* Animation classes */
