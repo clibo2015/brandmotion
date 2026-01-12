@@ -49,10 +49,9 @@ const Awards = () => {
             transition={{ delay: 0.2 }}
           >
             <h3
-              className="text-3xl lg:text-5xl font-light text-gray-400"
-              style={{ fontFamily: '"Playfair Display", serif' }}
+              className="text-3xl lg:text-5xl font-poppins text-gray-400"
             >
-              OUR <span className="block font-semibold text-white">SUCCESS</span>
+              OUR <span className="block font-poppins-black text-white">SUCCESS</span>
             </h3>
           </motion.div>
         </div>
