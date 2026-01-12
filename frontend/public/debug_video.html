@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Debug</title>
+    <style>
+        body { background: #333; color: white; font-family: sans-serif; }
+        video { max-width: 100%; border: 2px solid red; }
+    </style>
+</head>
+<body>
+    <h1>Video Debug Page</h1>
+    <p>Testing /hero-background.mp4</p>
+    
+    <video controls autoplay loop muted playsinline>
+        <source src="/hero-background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const video = document.querySelector('video');
+        video.addEventListener('loadstart', () => console.log('Event: loadstart'));
+        video.addEventListener('loadedmetadata', () => console.log('Event: loadedmetadata'));
+        video.addEventListener('loadeddata', () => console.log('Event: loadeddata'));
+        video.addEventListener('canplay', () => console.log('Event: canplay'));
+        video.addEventListener('error', (e) => console.error('Event: error', video.error));
+    </script>
+</body>
+</html>

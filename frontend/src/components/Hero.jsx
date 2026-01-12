@@ -11,17 +11,7 @@ const Hero = () => {
   const videoRef = useRef(null);
   const bgVideoRef = useRef(null);
 
-  useEffect(() => {
-    // Preload background video
-    if (bgVideoRef.current) {
-      bgVideoRef.current.addEventListener('loadeddata', () => {
-        setVideoLoaded(true);
-      });
-      bgVideoRef.current.addEventListener('error', () => {
-        setVideoError(true);
-      });
-    }
-  }, []);
+
 
   const handlePlayClick = () => {
     setShowContent(false);
@@ -118,10 +108,17 @@ const Hero = () => {
           loop
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            videoLoaded ? 'opacity-60' : 'opacity-0'
-          }`}
-          onError={() => setVideoError(true)}
+          onLoadedData={() => {
+            console.log('Video loaded successfully');
+            setVideoLoaded(true);
+          }}
+          onError={(e) => {
+            console.error('Video error:', e);
+            console.error('Video error details:', e.currentTarget.error);
+            setVideoError(true);
+          }}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-60' : 'opacity-0'
+            }`}
         >
           <source src="/hero-background.mp4" type="video/mp4" />
         </video>
@@ -151,7 +148,7 @@ const Hero = () => {
                   custom={0}
                   variants={textVariants}
                   className="font-akira text-4xl md:text-6xl lg:text-[100px] tracking-wider text-white"
-                  style={{ 
+                  style={{
                     color: '#1B3541',
                     fontFamily: 'Akira Expanded, sans-serif',
                     fontWeight: 800,
@@ -165,7 +162,7 @@ const Hero = () => {
                   custom={1}
                   variants={textVariants}
                   className="font-akira text-4xl md:text-6xl lg:text-[100px] tracking-wide -mt-1 lg:-mt-4 text-white"
-                  style={{ 
+                  style={{
                     color: '#00B2B3',
                     textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
                   }}
