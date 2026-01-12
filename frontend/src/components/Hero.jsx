@@ -11,7 +11,23 @@ const Hero = () => {
   const videoRef = useRef(null);
   const bgVideoRef = useRef(null);
 
+  useEffect(() => {
+    // Force play on mount to bypass some autoplay restrictions
+    const playVideo = async () => {
+      if (bgVideoRef.current) {
+        try {
+          bgVideoRef.current.muted = true; // Extra safety
+          await bgVideoRef.current.play();
+          console.log('Forced video play successful');
+        } catch (err) {
+          console.error('Initial video play failed:', err);
+          // Some browsers still block it until interaction
+        }
+      }
+    };
 
+    playVideo();
+  }, []);
 
   const handlePlayClick = () => {
     setShowContent(false);
@@ -99,40 +115,50 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen bg-black overflow-hidden pt-24 lg:pt-32">
-      {/* Background Video */}
-      {!videoError && (
-        <video
-          ref={bgVideoRef}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-60' : 'opacity-0'
-            }`}
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="/hero-background.mp4"
-          onLoadedData={() => {
-            console.log('Video loaded successfully');
-            setVideoLoaded(true);
-          }}
-          onError={(e) => {
-            const error = e.currentTarget.error;
-            console.error('Video error object:', error);
-            console.error('Video error code:', error ? error.code : 'unknown');
-            console.error('Video error message:', error ? error.message : 'no message');
-            setVideoError(true);
-          }}
-        >
-        </video>
-      )}
+    <section id="home" className="relative h-screen min-h-[600px] bg-black overflow-hidden pt-24 lg:pt-32">
+      {/* Container for Background Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 0 }}>
+        {/* Dark semi-transparent overlay */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
 
-      {/* Fallback background when video fails to load */}
-      {(videoError || !videoLoaded) && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" />
-      )}
+        {!videoError && (
+          <video
+            ref={bgVideoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/hero-poster.jpg"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 z-0 ${videoLoaded ? 'opacity-60' : 'opacity-0'}`}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            onLoadedData={() => {
+              console.log('Video loaded successfully');
+              setVideoLoaded(true);
+            }}
+            onError={(e) => {
+              const error = e.currentTarget.error;
+              console.error('Video error object:', error);
+              console.error('Video error code:', error ? error.code : 'unknown');
+              console.error('Video error message:', error ? error.message : 'no message');
+              setVideoError(true);
+            }}
+          >
+            <source src="/hero-background.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
 
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40" />
+        {/* Fallback background when video fails to load */}
+        {(videoError || !videoLoaded) && (
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+          >
+            <div className="absolute inset-0 bg-black/60" />
+          </div>
+        )}
+      </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
         <AnimatePresence mode="wait">
