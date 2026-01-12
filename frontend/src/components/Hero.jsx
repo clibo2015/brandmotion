@@ -1,9 +1,12 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X } from 'lucide-react';
 import { heroData } from '../data/mock';
 
 const Hero = () => {
+  const [mounted, setMounted] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [showContent, setShowContent] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -11,23 +14,32 @@ const Hero = () => {
   const videoRef = useRef(null);
   const bgVideoRef = useRef(null);
 
+  // Set mounted state to true once component is on the client
   useEffect(() => {
-    // Force play on mount to bypass some autoplay restrictions
+    setMounted(true);
+  }, []);
+
+  // Force play background video once mounted
+  useEffect(() => {
+    if (!mounted) return;
+
     const playVideo = async () => {
       if (bgVideoRef.current) {
         try {
-          bgVideoRef.current.muted = true; // Extra safety
+          bgVideoRef.current.muted = true;
           await bgVideoRef.current.play();
-          console.log('Forced video play successful');
+          console.log('Background video play successful');
         } catch (err) {
-          console.error('Initial video play failed:', err);
-          // Some browsers still block it until interaction
+          // Ignore AbortError as it's often benign in React hydration/remounts
+          if (err.name !== 'AbortError') {
+            console.error('Video play error:', err);
+          }
         }
       }
     };
 
     playVideo();
-  }, []);
+  }, [mounted]);
 
   const handlePlayClick = () => {
     setShowContent(false);
@@ -116,12 +128,12 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-screen min-h-[600px] bg-black overflow-hidden pt-24 lg:pt-32">
-      {/* Container for Background Video */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 0 }}>
+      {/* Container for Background Video - Client Side Only */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: -1 }}>
         {/* Dark semi-transparent overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/50" style={{ zIndex: 1 }} />
 
-        {!videoError && (
+        {mounted && !videoError && (
           <video
             ref={bgVideoRef}
             autoPlay
@@ -130,17 +142,23 @@ const Hero = () => {
             playsInline
             preload="auto"
             poster="/hero-poster.jpg"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 z-0 ${videoLoaded ? 'opacity-60' : 'opacity-0'}`}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: -1,
+              opacity: videoLoaded ? 0.6 : 0
+            }}
             onLoadedData={() => {
-              console.log('Video loaded successfully');
+              console.log('Background video rendered');
               setVideoLoaded(true);
             }}
             onError={(e) => {
               const error = e.currentTarget.error;
-              console.error('Video error object:', error);
-              console.error('Video error code:', error ? error.code : 'unknown');
-              console.error('Video error message:', error ? error.message : 'no message');
+              console.error('MediaError detected:', error);
               setVideoError(true);
             }}
           >
@@ -149,11 +167,14 @@ const Hero = () => {
           </video>
         )}
 
-        {/* Fallback background when video fails to load */}
-        {(videoError || !videoLoaded) && (
+        {/* Fallback background when video fails to load or during SSR */}
+        {(!mounted || videoError || !videoLoaded) && (
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+            style={{
+              backgroundImage: 'url(/hero-poster.jpg)',
+              zIndex: -1
+            }}
           >
             <div className="absolute inset-0 bg-black/60" />
           </div>
