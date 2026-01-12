@@ -39,13 +39,13 @@ export const createImageObserver = () => {
 
 // Preload critical resources
 export const preloadCriticalResources = () => {
-  // Preload hero background video
-  const videoLink = document.createElement('link');
-  videoLink.rel = 'preload';
-  videoLink.href = '/hero-background.mp4';
-  videoLink.as = 'video';
-  videoLink.type = 'video/mp4';
-  document.head.appendChild(videoLink);
+  // Preload hero background video - DISABLED due to 'unsupported as value' error
+  // const videoLink = document.createElement('link');
+  // videoLink.rel = 'preload';
+  // videoLink.href = '/hero-background.mp4';
+  // videoLink.as = 'video';
+  // videoLink.type = 'video/mp4';
+  // document.head.appendChild(videoLink);
 
   // Preload critical fonts
   const fontLink = document.createElement('link');
@@ -57,17 +57,15 @@ export const preloadCriticalResources = () => {
   document.head.appendChild(fontLink);
 };
 
-// Service Worker registration for caching
+// Service Worker registration for caching - DISABLED
 export const registerServiceWorker = () => {
   if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('SW registered: ', registration);
-        })
-        .catch((registrationError) => {
-          console.log('SW registration failed: ', registrationError);
-        });
+    // Unregister any existing service workers
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      for (let registration of registrations) {
+        registration.unregister();
+        console.log('Service Worker unregistered');
+      }
     });
   }
 };

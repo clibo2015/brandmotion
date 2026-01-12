@@ -104,10 +104,13 @@ const Hero = () => {
       {!videoError && (
         <video
           ref={bgVideoRef}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-60' : 'opacity-0'
+            }`}
           autoPlay
           loop
           muted
           playsInline
+          src="/hero-background.mp4"
           onLoadedData={() => {
             console.log('Video loaded successfully');
             setVideoLoaded(true);
@@ -117,10 +120,7 @@ const Hero = () => {
             console.error('Video error details:', e.currentTarget.error);
             setVideoError(true);
           }}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-60' : 'opacity-0'
-            }`}
         >
-          <source src="/hero-background.mp4" type="video/mp4" />
         </video>
       )}
 
