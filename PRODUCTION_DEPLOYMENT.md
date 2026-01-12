@@ -67,6 +67,8 @@ npm install -g vercel
 vercel --prod
 ```
 
+**Important**: The project includes `.npmrc` and `vercel.json` files to handle dependency conflicts during deployment.
+
 ### Alternative: Netlify
 1. Connect GitHub repository
 2. Build command: `npm run build`
@@ -78,6 +80,33 @@ vercel --prod
 2. Configure `.htaccess` for React Router
 3. Set up SSL certificate
 4. Configure domain DNS
+
+## 🔧 Vercel Configuration Files
+
+The project includes these configuration files for proper deployment:
+
+### `.npmrc`
+```
+legacy-peer-deps=true
+```
+Handles React 19 and dependency conflicts during build.
+
+### `vercel.json`
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build", 
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "create-react-app",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+Configures build settings and SPA routing.
 
 ## 🔧 Environment Variables
 
