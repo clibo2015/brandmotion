@@ -129,7 +129,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative h-screen min-h-[600px] bg-black overflow-hidden pt-24 lg:pt-32">
       {/* Container for Background Video - Client Side Only */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: -1 }}>
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* Dark semi-transparent overlay */}
         <div className="absolute inset-0 bg-black/50" style={{ zIndex: 1 }} />
 
@@ -149,7 +149,7 @@ const Hero = () => {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              zIndex: -1,
+              zIndex: 0,
               opacity: videoLoaded ? 0.6 : 0
             }}
             onLoadedData={() => {
@@ -170,7 +170,7 @@ const Hero = () => {
 
         {/* Fallback background when video fails to load or during SSR */}
         {(!mounted || videoError || !videoLoaded) && (
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" style={{ zIndex: -1 }} />
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" style={{ zIndex: 0 }} />
         )}
       </div>
 
