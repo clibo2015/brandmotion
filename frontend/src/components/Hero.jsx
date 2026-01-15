@@ -141,7 +141,7 @@ const Hero = () => {
             loop
             playsInline
             preload="auto"
-            poster="/hero-poster.jpg"
+
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
             style={{
               position: 'absolute',
@@ -169,15 +169,7 @@ const Hero = () => {
 
         {/* Fallback background when video fails to load or during SSR */}
         {(!mounted || videoError || !videoLoaded) && (
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url(/hero-poster.jpg)',
-              zIndex: -1
-            }}
-          >
-            <div className="absolute inset-0 bg-black/60" />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" style={{ zIndex: -1 }} />
         )}
       </div>
 
