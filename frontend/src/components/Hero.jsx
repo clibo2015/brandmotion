@@ -282,7 +282,7 @@ const Hero = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute inset-0 z-30 flex items-center justify-center p-4 pt-20"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-20 bg-black/90"
             >
               <div className="relative w-full max-w-6xl aspect-video">
                 <button
