@@ -156,6 +156,7 @@ const Hero = () => {
               console.log('Background video rendered');
               setVideoLoaded(true);
             }}
+            onCanPlay={(e) => console.log('Video decodable and ready to play')}
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error('MediaError detected:', error);
@@ -191,7 +192,7 @@ const Hero = () => {
                   className="font-akira text-4xl md:text-6xl lg:text-[100px] tracking-wider text-white"
                   style={{
                     color: '#1B3541',
-                    fontFamily: 'Akira Expanded, sans-serif',
+                    fontFamily: "'Akira Expanded', 'Poppins', sans-serif",
                     fontWeight: 800,
                     letterSpacing: '0.1em',
                     textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
