@@ -133,7 +133,7 @@ const Hero = () => {
         {/* Dark semi-transparent overlay */}
         <div className="absolute inset-0 bg-black/50" style={{ zIndex: 1 }} />
 
-        {mounted && !videoError && (
+        {mounted && (
           <video
             ref={bgVideoRef}
             autoPlay
@@ -142,15 +142,14 @@ const Hero = () => {
             playsInline
             preload="auto"
 
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoError ? 'opacity-0' : (videoLoaded ? 'opacity-60' : 'opacity-0')}`}
             style={{
               position: 'absolute',
               inset: 0,
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              zIndex: 0,
-              opacity: videoLoaded ? 0.6 : 0
+              zIndex: 0
             }}
             onLoadedData={() => {
               console.log('Background video rendered');
