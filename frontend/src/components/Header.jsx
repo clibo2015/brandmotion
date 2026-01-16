@@ -27,18 +27,17 @@ const Header = () => {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <motion.div
+          <motion.a
+            href="#home"
             whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center cursor-pointer"
           >
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 8H32L24 20L32 32H8V8Z" fill="#00BFB3" />
-            </svg>
-            <div className="flex flex-col leading-none">
-              <span className="text-sm font-bold tracking-wider text-gray-900">BRAND</span>
-              <span className="text-sm font-bold tracking-wider text-gray-900">SURGE</span>
-            </div>
-          </motion.div>
+            <img 
+              src="/brand-logo.png" 
+              alt="Brand Logo" 
+              className="h-12 lg:h-16 w-auto object-contain"
+            />
+          </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
