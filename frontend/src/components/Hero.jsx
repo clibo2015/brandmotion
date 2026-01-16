@@ -25,6 +25,12 @@ const Hero = () => {
 
     const playVideo = async () => {
       if (bgVideoRef.current) {
+        // Check if video is already ready (race condition fix)
+        if (bgVideoRef.current.readyState >= 3) {
+          console.log('Video already ready on mount');
+          setVideoLoaded(true);
+        }
+
         try {
           bgVideoRef.current.muted = true;
           await bgVideoRef.current.play();
@@ -149,13 +155,20 @@ const Hero = () => {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              zIndex: 0
+              zIndex: 1
             }}
             onLoadedData={() => {
-              console.log('Background video rendered');
+              console.log('Background video rendered (onLoadedData)');
               setVideoLoaded(true);
             }}
-            onCanPlay={(e) => console.log('Video decodable and ready to play')}
+            onCanPlay={() => {
+              console.log('Video decodable and ready to play (onCanPlay)');
+              setVideoLoaded(true);
+            }}
+            onPlaying={() => {
+              console.log('Video actually playing (onPlaying)');
+              setVideoLoaded(true);
+            }}
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error('MediaError detected:', error);
