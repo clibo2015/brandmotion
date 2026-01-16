@@ -24,18 +24,18 @@ const Header = () => {
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-2 lg:px-4">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <motion.a
             href="#home"
             whileHover={{ scale: 1.02 }}
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer -ml-2 lg:-ml-4"
           >
             <img 
               src="/brand-new.png" 
               alt="BrandSurge Logo" 
-              className="h-12 lg:h-16 w-auto object-contain"
+              className="h-20 lg:h-28 w-auto object-contain"
             />
           </motion.a>
 
