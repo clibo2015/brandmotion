@@ -11,8 +11,21 @@ const Hero = () => {
   const [showContent, setShowContent] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef(null);
   const bgVideoRef = useRef(null);
+
+  // Detect if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Set mounted state to true once component is on the client
   useEffect(() => {
@@ -175,8 +188,7 @@ const Hero = () => {
               setVideoError(true);
             }}
           >
-            <source src="/hero-bg-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
-            <source src="/hero-bg.mp4" type="video/mp4" />
+            <source src={isMobile ? "/hero-bg-mobile.mp4" : "/hero-bg.mp4"} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}
@@ -310,8 +322,7 @@ const Hero = () => {
                   className="w-full h-full rounded-lg shadow-2xl"
                   controls
                 >
-                  <source src="/intro-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
-                  <source src="/intro.mp4" type="video/mp4" />
+                  <source src={isMobile ? "/intro-mobile.mp4" : "/intro.mp4"} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
